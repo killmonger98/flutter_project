@@ -71,6 +71,7 @@ class PostsScreen extends StatelessWidget {
             return Card(
               margin: const EdgeInsets.all(10.0),
               child: ListTile(
+                leading: Image.asset("assets/images/icon.png"),
                 title: Text(post.name),
                 subtitle: Text(
                   post.body,

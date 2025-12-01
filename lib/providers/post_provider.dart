@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:ffi';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -28,11 +26,18 @@ class PostsProvider extends ChangeNotifier {
   String? get error => _error;
 
   Future<void> fetchPosts() async {
-    _setLoading(true);
+    setLoading(true);
 
     try {
       final response = await _dio.get(
-        'https://jsonplaceholder.typicode.com/posts',
+        'https://jsonplaceholder.typicode.com/posts?_limit=15',
+        options: Options(
+          headers: {
+            'User-Agent': 'FlutterApp/1.0',
+            'Accept': 'application/json',
+          },
+          validateStatus: (status) => status! < 500,
+        ),
       );
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data;
@@ -44,11 +49,11 @@ class PostsProvider extends ChangeNotifier {
       _error = "Error: $e";
       print(_error);
     } finally {
-      _setLoading(false);
+      setLoading(false);
     }
   }
 
-  void _setLoading(bool loading) {
+  void setLoading(bool loading) {
     _isLoading = loading;
     notifyListeners();
   }
