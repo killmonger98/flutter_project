@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/pages/home_page.dart';
-import 'package:flutter_project/pages/login_page.dart';
+import 'package:flutter_project/views/home_view.dart';
+import 'package:flutter_project/views/login_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: const LoginView(),
       routes: {
-        "/homePage": (context) => const HomePage(),
-        "/loginPage": (context) => const LoginPage(),
+        "/homePage": (context) => const HomeView(),
+        "/loginPage": (context) => const LoginView(),
       },
     );
   }
