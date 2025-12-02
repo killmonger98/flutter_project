@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
       home: const LoginView(),
       routes: {
         "/homePage": (context) => const HomeView(),
-        "/loginPage": (context) => const LoginView(),
       },
     );
   }

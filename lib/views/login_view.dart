@@ -53,7 +53,7 @@ class LoginView extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           if (viewModel.validate()) {
-                            Navigator.pushNamed(context, "/homePage");
+                            Navigator.pushReplacementNamed(context, "/homePage");
                           }
                         },
                         child: const Text("Login"),
